@@ -34,9 +34,12 @@ class CreditCard:
 
 if __name__ == '__main__':
     nasabah = []
-    nasabah.append(CreditCard('Joni Sukmo', 'BCA', '0273 2849 7182 8201', 2500))
-    nasabah.append(CreditCard('Windiarti', 'Bank Syariah', '0828 7839 7739 1728', 3500))
-    nasabah.append(CreditCard('Suwarti Saman', 'BRI', '0784 7728 1116 8392', 4000))
+    nasabah.append(CreditCard('Joni Sukmo',
+                              'BCA', '0273 2849 7182 8201', 2500))
+    nasabah.append(CreditCard('Windiarti',
+                              'Bank Syariah', '0828 7839 7739 1728', 3500))
+    nasabah.append(CreditCard('Suwarti Saman',
+                              'BRI', '0784 7728 1116 8392', 4000))
 
     for val in range(1, 17):
         nasabah[0].charge(val)
@@ -53,4 +56,3 @@ if __name__ == '__main__':
             nasabah[c].make_payment(100)
             print('New Balance = ', nasabah[c].get_balance())
         print()
-        
