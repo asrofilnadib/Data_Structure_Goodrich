@@ -1,0 +1,70 @@
+class CreditCard:
+    """A consumer credit card."""
+
+    def __init__(self, customer, bank, acnt, limit):
+        """Create a new credit card instance.
+
+    The initial balance is zero.
+
+    customer  the name of the customer (e.g., 'John Bowman')
+    bank      the name of the bank (e.g., 'California Savings')
+    acnt      the acount identifier (e.g., '5391 0375 9387 5309')
+    limit     credit limit (measured in dollars)
+    """
+        self._customer = customer
+        self._bank = bank
+        self._account = acnt
+        self._limit = limit
+        self._balance = 0
+
+    def get_customer(self):
+        """Return name of the customer."""
+        return self._customer
+
+    def get_bank(self):
+        """Return the bank's name."""
+        return self._bank
+
+    def get_account(self):
+        """Return the card identifying number (typically stored as a string)."""
+        return self._account
+
+    def get_limit(self):
+        """Return current credit limit."""
+        return self._limit
+
+    def get_balance(self):
+        """Return current balance."""
+        return self._balance
+
+    def charge(self, price):
+        if price + self._balance > self._limit:
+            return False
+        else:
+            self._balance += price
+            return True
+
+    def make_payment(self, amount):
+        self._balance -= amount
+
+
+if __name__ == "__main__":
+    nasabah = [CreditCard("Mohammad", "BRI", "0675 8475 1273 7182", 5000),
+               CreditCard("Asrofil", "BNI", "0827 6284 8246 1928", 3500),
+               CreditCard("Nadib", "Bank Mandiri", "0827 7182 9841 7478", 5500)]
+
+    for val in range(1, 17):
+        nasabah[0].charge(val)
+        nasabah[1].charge(2*val)
+        nasabah[2].charge(3*val)
+
+    for c in range(3):
+        print("Nasabah\t: ", nasabah[c].get_customer())
+        print("Bank\t: " + nasabah[c].get_bank())
+        print("No.ID\t: " + nasabah[c].get_account())
+        print("Limit\t: " + nasabah[c].get_limit())
+        print("Saldo\t: " + nasabah[c].get_balance())
+        while nasabah[c].get_balance() > 100:
+            nasabah[c].make_payment(100)
+            print("Saldo\t: " + nasabah[c].get_balance())
+        print()
