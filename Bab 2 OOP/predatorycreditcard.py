@@ -1,6 +1,8 @@
 from creditcard import CreditCard
 
 class PredatoryCreditCard(CreditCard):
+	__slots__ = '_apr'
+	OVERLIMITEDFEE = 5
 	def __init__(self, customer, bank, acnt, limit, apr):
 		"""Buat new predatory credit card
 		
@@ -25,7 +27,7 @@ class PredatoryCreditCard(CreditCard):
 		dibatalokan"""
 		success = super().charge(price)
 		if not success:
-			self._balance += 5
+			self._balance += PredatoryCreditCard.OVERLIMITEDFEE
 		return success
 	
 	def process_month(self):

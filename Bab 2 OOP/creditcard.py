@@ -1,4 +1,5 @@
 class CreditCard:
+    __slots__ = '_customer', '_bank', '_acnt', '_limit', '_balance'
     def __init__(self, customer, bank, acnt, limit):
         self._customer = customer
         self._bank = bank
